@@ -5,8 +5,8 @@
  */
 package carrent.services;
 
-import carrent.models.Car;
-import carrent.models.Client;
+
+import carrent.models.Transactions;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -15,12 +15,12 @@ import javax.persistence.TypedQuery;
  *
  * @author hp
  */
-public class ClientService extends ServiceBase {
-    public void addClient(Client c){
+public class TransactionsService extends ServiceBase {
+    public void addTransaction(Transactions t){
         EntityManager em  = this.getEntityManager();
         em.getTransaction().begin();
         try{
-            em.persist(c);
+            em.persist(t);
             em.getTransaction().commit();
         }
         catch(Exception e){
@@ -31,21 +31,23 @@ public class ClientService extends ServiceBase {
             em.close();
         }
     }
-    public List<Client> getAllClients(){
+    public List<Transactions> getAllTransactions(){
         EntityManager em  = this.getEntityManager();
-        TypedQuery<Client> q = em.createNamedQuery("Client.findAll", Client.class);
+        TypedQuery<Transactions> q = em.createNamedQuery("Car.findAll", Transactions.class);
         return q.getResultList();
     }
-    public Client getClientById(int id){
+    public Transactions getTransactionById(int id){
         EntityManager em  = this.getEntityManager();
-        return em.find(Client.class, id);
+        return em.find(Transactions.class, id);
     }
-    public void updateClient(Client c, String address){
+    public void updateTransaction(Transactions t, int days){
         EntityManager em  = this.getEntityManager();
         em.getTransaction().begin();
+        int newTotalPrice = t.getCarId().getPricePerDay() * days;
         try{
-            c.setAdres(address);
-            c = em.merge(c);
+            t.setDays(days);
+            t.setTotalPrice(newTotalPrice);
+            t = em.merge(t);
             em.getTransaction().commit();
         }
         catch(Exception e){
@@ -56,12 +58,12 @@ public class ClientService extends ServiceBase {
             em.close();
         }
     }
-    public void removeClient(Client c){
+    public void removeTransaction(Transactions t){
         EntityManager em  = this.getEntityManager();
         em.getTransaction().begin();
         try{
-            c = em.merge(c);
-            em.remove(c);
+            t = em.merge(t);
+            em.remove(t);
             em.getTransaction().commit();
         }
         catch(Exception e){

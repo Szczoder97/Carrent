@@ -54,10 +54,10 @@ public class Transactions implements Serializable {
         this.id = id;
     }
 
-    public Transactions(Integer id, Integer days, Integer totalPrice, Car carId, Client clientId) {
+    public Transactions(Integer id, Integer days, Car carId, Client clientId) {
         this.id = id;
         this.days = days;
-        this.totalPrice = totalPrice;
+        this.totalPrice = days * carId.getPricePerDay();
         this.carId = carId;
         this.clientId = clientId;
     }
