@@ -5,17 +5,22 @@
  */
 package carrent.GUI;
 
+import carrent.models.Car;
+import carrent.services.CarService;
+import java.util.List;
+
 /**
  *
  * @author hp
  */
 public class CarFrame extends javax.swing.JFrame {
-
+    CarService cs;
     /**
      * Creates new form CarFrame
      */
     public CarFrame() {
         initComponents();
+        cs = new CarService();
     }
 
     /**
@@ -27,21 +32,231 @@ public class CarFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taCars = new javax.swing.JTextArea();
+        bGetAllCars = new javax.swing.JButton();
+        tGetCarById = new javax.swing.JButton();
+        tCarBrand = new javax.swing.JTextField();
+        tCarModel = new javax.swing.JTextField();
+        tCarYear = new javax.swing.JTextField();
+        tCarV = new javax.swing.JTextField();
+        tCarHp = new javax.swing.JTextField();
+        tCarId = new javax.swing.JTextField();
+        tCarPrice = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        bAddCar = new javax.swing.JButton();
+        bEdit = new javax.swing.JButton();
+        bRemoveCar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        taCars.setColumns(20);
+        taCars.setRows(5);
+        jScrollPane1.setViewportView(taCars);
+
+        bGetAllCars.setText("get all cars");
+        bGetAllCars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGetAllCarsActionPerformed(evt);
+            }
+        });
+
+        tGetCarById.setText("get car by id");
+        tGetCarById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tGetCarByIdActionPerformed(evt);
+            }
+        });
+
+        tCarHp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tCarHpActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Car id");
+
+        jLabel2.setText("brand");
+
+        jLabel3.setText("model");
+
+        jLabel4.setText("year of production");
+
+        jLabel5.setText("engine volume");
+
+        jLabel6.setText("horse power");
+
+        jLabel7.setText("price per day");
+
+        bAddCar.setText("add car");
+        bAddCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAddCarActionPerformed(evt);
+            }
+        });
+
+        bEdit.setText("edit price per day");
+        bEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEditActionPerformed(evt);
+            }
+        });
+
+        bRemoveCar.setText("remove car");
+        bRemoveCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRemoveCarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(tCarId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tGetCarById, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bGetAllCars)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(bRemoveCar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(tCarBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(87, 87, 87)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tCarYear, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(tCarV, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tCarHp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tCarPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(46, 46, 46))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(bEdit)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bGetAllCars)
+                    .addComponent(tGetCarById))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tCarBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCarV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAddCar)
+                    .addComponent(bEdit)
+                    .addComponent(bRemoveCar))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tCarHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCarHpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tCarHpActionPerformed
+
+    private void tGetCarByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tGetCarByIdActionPerformed
+
+        Car c = cs.getCarById(tCarId.getText());
+        tCarBrand.setText(c.getBrand());
+        tCarHp.setText(c.getHp().toString());
+        tCarId.setText(c.getId());
+        tCarModel.setText(c.getModel());
+        tCarPrice.setText(c.getPricePerDay().toString());
+        tCarV.setText(c.getVolume().toString());
+        tCarYear.setText(c.getYear().toString());
+    }//GEN-LAST:event_tGetCarByIdActionPerformed
+
+    private void bGetAllCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGetAllCarsActionPerformed
+
+        List<Car> cars = cs.getAllCars();
+        for(Car c : cars){
+            taCars.append(c + "\n");
+        }
+    }//GEN-LAST:event_bGetAllCarsActionPerformed
+
+    private void bAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddCarActionPerformed
+        Car c = new Car(tCarId.getText(), tCarBrand.getText(), tCarModel.getText(),
+                Integer.parseInt(tCarYear.getText()),Integer.parseInt(tCarV.getText()),Integer.parseInt(tCarHp.getText()), Integer.parseInt(tCarPrice.getText()));
+        cs.addCar(c);
+    }//GEN-LAST:event_bAddCarActionPerformed
+
+    private void bEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditActionPerformed
+        Car c = cs.getCarById(tCarId.getText());
+        cs.updateCar(c, Integer.parseInt(tCarPrice.getText()));
+    }//GEN-LAST:event_bEditActionPerformed
+
+    private void bRemoveCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRemoveCarActionPerformed
+        Car c = cs.getCarById(tCarId.getText());
+        cs.removeCar(c);
+    }//GEN-LAST:event_bRemoveCarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +294,26 @@ public class CarFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAddCar;
+    private javax.swing.JButton bEdit;
+    private javax.swing.JButton bGetAllCars;
+    private javax.swing.JButton bRemoveCar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField tCarBrand;
+    private javax.swing.JTextField tCarHp;
+    private javax.swing.JTextField tCarId;
+    private javax.swing.JTextField tCarModel;
+    private javax.swing.JTextField tCarPrice;
+    private javax.swing.JTextField tCarV;
+    private javax.swing.JTextField tCarYear;
+    private javax.swing.JButton tGetCarById;
+    private javax.swing.JTextArea taCars;
     // End of variables declaration//GEN-END:variables
 }

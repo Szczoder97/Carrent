@@ -161,7 +161,7 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return id;
+        return id + " " + brand + " " + model + " " + year + " " + volume + " " + hp + " " + pricePerDay;
     }
     
 }

@@ -10,12 +10,25 @@ package carrent.GUI;
  * @author hp
  */
 public class StartFrame extends javax.swing.JFrame {
-
+    CarFrame CarF;
+    ClientFrame CliF;
+    //CarF = new CarFrame();
+    //CarF.setTitle("Cars");
+    //CarF.setSize(1300, 900);
+    //CliF = new ClientFrame();
+    //CliF.setTitle("Clients");
+    //CliF.size(640, 480)
     /**
      * Creates new form StartFrame
      */
     public StartFrame() {
         initComponents();
+        CarF = new CarFrame();
+        CarF.setTitle("Cars");
+        CarF.setSize(1300, 900);
+        CliF = new ClientFrame();
+        CliF.setTitle("Clients");
+        CliF.setSize(640, 480);
     }
 
     /**
@@ -40,6 +53,11 @@ public class StartFrame extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         miExit.setText("exit");
+        miExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miExitActionPerformed(evt);
+            }
+        });
         jMenu1.add(miExit);
 
         jMenuBar1.add(jMenu1);
@@ -47,6 +65,11 @@ public class StartFrame extends javax.swing.JFrame {
         jMenu2.setText("Edit");
 
         miClients.setText("Clients");
+        miClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miClientsActionPerformed(evt);
+            }
+        });
         jMenu2.add(miClients);
 
         miCars.setText("Cars");
@@ -79,8 +102,16 @@ public class StartFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miCarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCarsActionPerformed
-        // TODO add your handling code here:
+        CarF.setVisible(true);
     }//GEN-LAST:event_miCarsActionPerformed
+
+    private void miExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miExitActionPerformed
+       System.exit(0); 
+    }//GEN-LAST:event_miExitActionPerformed
+
+    private void miClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClientsActionPerformed
+       CliF.setVisible(true);
+    }//GEN-LAST:event_miClientsActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,12 +5,7 @@
  */
 package carrent;
 
-import carrent.models.Car;
-import carrent.models.Client;
-import carrent.models.Transactions;
-import carrent.services.CarService;
-import carrent.services.ClientService;
-import carrent.services.TransactionsService;
+import carrent.GUI.StartFrame;
 
 
 
@@ -24,16 +19,10 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      CarService cs = new CarService();
-      ClientService cls = new ClientService();
-      TransactionsService ts = new TransactionsService();
-      Car car = cs.getCarById("GD 07604");
-      Client client  = cls.getClientById(0);
-      System.out.println(car);
-      System.out.println(client);
-      Transactions t = new Transactions(0,2,car,client);
-      System.out.println(t);
-      ts.addTransaction(t);
+        StartFrame sf = new StartFrame();
+        sf.setSize(640, 480);
+        sf.setTitle("Carrent");
+        sf.setVisible(true);
     }
     
 }
