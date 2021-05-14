@@ -5,10 +5,20 @@
  */
 package carrent.services;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author hp
  */
-public class ServiceBase {
-    
+public abstract class ServiceBase {
+    EntityManagerFactory emf;
+    public EntityManager getEntityManager(){
+        if(emf == null){
+            emf = Persistence.createEntityManagerFactory("CarrentPU");
+        }
+        return emf.createEntityManager();
+    }
 }
