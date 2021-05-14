@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="CarrentPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>carrent.models.Transactions</class>
+    <class>carrent.models.Client</class>
+    <class>carrent.models.Car</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\sqlexpress;databaseName=s2232pab"/>
+      <property name="javax.persistence.jdbc.user" value="s2232"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="s2232pab"/>
+    </properties>
+  </persistence-unit>
+</persistence>
